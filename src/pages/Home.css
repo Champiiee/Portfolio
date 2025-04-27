@@ -1,36 +1,13 @@
 .home-container {
   position: relative;
   overflow: hidden;
-}
-
-.bg-shape {
-  position: absolute;
-  border-radius: 50%;
-  filter: blur(60px);
-  z-index: -1;
-}
-
-.bg-shape-1 {
-  width: 400px;
-  height: 400px;
-  background: rgba(100, 200, 255, 0.2);
-  top: -100px;
-  left: -100px;
-}
-
-.bg-shape-2 {
-  width: 600px;
-  height: 600px;
-  background: rgba(255, 100, 200, 0.15);
-  bottom: -200px;
-  right: -200px;
+  max-width: 100%;
 }
 
 .hero-section {
   min-height: 100vh;
   display: flex;
   align-items: center;
-  padding: 0 5%;
 }
 
 .main-content {
@@ -50,14 +27,15 @@
   margin: 6rem auto;
   padding: 3rem;
   border-radius: 20px;
-  background: rgba(255, 255, 255, 0.1);
+  background: rgba(0, 123, 255, 0.1); /* Match navbar's primary color with transparency */
   backdrop-filter: blur(10px);
+  box-shadow: 0 8px 20px rgba(0, 123, 255, 0.2); /* Add shadow matching navbar's theme */
 }
 
 .section-title {
   font-size: 2.5rem;
   margin-bottom: 1.5rem;
-  background: linear-gradient(90deg, #ff8a00, #e52e71);
+  background: linear-gradient(90deg, #007BFF, #0056b3); /* Match navbar gradient */
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
@@ -67,7 +45,7 @@
   font-size: 1.2rem;
   line-height: 1.6;
   margin-bottom: 2rem;
-  color: #666;
+  color: #333; /* Darker text for better readability */
 }
 
 .cta-button {
@@ -76,7 +54,7 @@
   font-weight: bold;
   border: none;
   border-radius: 50px;
-  background: linear-gradient(45deg, #ff8a00, #e52e71);
+  background: linear-gradient(45deg, #007BFF, #0056b3); /* Match navbar gradient */
   color: white;
   cursor: pointer;
   transition: transform 0.3s, box-shadow 0.3s;
@@ -84,5 +62,5 @@
 
 .cta-button:hover {
   transform: translateY(-3px);
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2); /* Slightly darker shadow on hover */
 }

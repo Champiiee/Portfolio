@@ -18,9 +18,6 @@ function Navbar() {
           <Button color="inherit" component={Link} to="/about" sx={{ textTransform: 'none' }}>
             About
           </Button>
-          <Button color="inherit" component={Link} to="/projects" sx={{ textTransform: 'none' }}>
-            Projects
-          </Button>
           <Button color="inherit" component={Link} to="/contact" sx={{ textTransform: 'none' }}>
             Contact
           </Button>

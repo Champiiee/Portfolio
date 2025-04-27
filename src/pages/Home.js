@@ -41,10 +41,8 @@ function Home() {
 
   useEffect(() => {
     const ctx = gsap.context(() => {
-      // Create master timeline
       const tl = gsap.timeline();
       
-      // Hero animation
       tl.from(".hero", { 
         duration: 1.5, 
         y: -80, 
@@ -52,7 +50,6 @@ function Home() {
         ease: "power3.out"
       });
       
-      // Background shapes
       tl.from(".bg-shape-1", {
         x: -200,
         y: -200,
@@ -69,7 +66,6 @@ function Home() {
         ease: "elastic.out(1, 0.5)"
       }, "-=1.5");
 
-      // Card animations
       infoCardsRef.current.forEach((card, i) => {
         gsap.from(card, {
           scrollTrigger: {
@@ -85,7 +81,6 @@ function Home() {
         });
       });
 
-      // Section animation
       gsap.from(sectionRef.current, {
         scrollTrigger: {
           trigger: sectionRef.current,
@@ -98,7 +93,6 @@ function Home() {
         ease: "power2.out"
       });
 
-      // Responsive adjustments
       const mm = gsap.matchMedia();
       
       mm.add("(max-width: 768px)", () => {
