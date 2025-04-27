@@ -1,38 +1,49 @@
 import React, { useEffect, useRef } from 'react';
+import { useNavigate } from 'react-router-dom';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import Hero from '../components/Hero';
-import InfoCard from '../components/InfoCard';
 import './Home.css';
 
-// Register plugins
+// Import MUI icons
+import CodeIcon from '@mui/icons-material/Code';
+import PersonIcon from '@mui/icons-material/Person';
+import LaptopMacIcon from '@mui/icons-material/LaptopMac';
+
 gsap.registerPlugin(ScrollTrigger);
 
-// Card data
 const cardItems = [
   {
-    title: "My Skills",
-    content: "Full-stack development, UI/UX design, animation",
-    icon: "💻"
+    title: "Developer",
+    content: "Knowledgeable in HTML, React JS, and CSS",
+    icon: <CodeIcon style={{ fontSize: '3rem', color: '#007BFF' }} />, // MUI Icon
   },
   {
-    title: "Experience",
-    content: "5+ years building digital products",
-    icon: "🚀"
+    title: "Who am I?",
+    content: "I am a web developer that loves to explore new things",
+    icon: <PersonIcon style={{ fontSize: '3rem', color: '#007BFF' }} />, // MUI Icon
   },
   {
-    title: "Projects",
-    content: "Check out my latest work",
-    icon: "✨"
-  }
+    title: "Tech Adventurer",
+    content: "Always curious about technology and coding.",
+    icon: <LaptopMacIcon style={{ fontSize: '3rem', color: '#007BFF' }} />, // MUI Icon
+  },
 ];
+
+const InfoCard = ({ title, content, icon }) => (
+  <div className="info-card-content">
+    <div className="info-card-icon">{icon}</div>
+    <h3 className="info-card-title">{title}</h3>
+    <p className="info-card-text">{content}</p>
+  </div>
+);
 
 function Home() {
   const sectionRef = useRef(null);
   const infoCardsRef = useRef([]);
   const containerRef = useRef(null);
-  
-  // Add ref to array
+  const navigate = useNavigate();
+
   const addToRefs = (el) => {
     if (el && !infoCardsRef.current.includes(el)) {
       infoCardsRef.current.push(el);
@@ -42,43 +53,33 @@ function Home() {
   useEffect(() => {
     const ctx = gsap.context(() => {
       const tl = gsap.timeline();
-      
+
       tl.from(".hero", { 
-        duration: 1.5, 
-        y: -80, 
+        duration: 1.2, 
+        y: 60, 
         opacity: 0,
         ease: "power3.out"
-      });
-      
-      tl.from(".bg-shape-1", {
-        x: -200,
-        y: -200,
+      })
+      .from([".bg-shape-1", ".bg-shape-2"], {
+        scale: 0.8,
         opacity: 0,
-        duration: 2,
-        ease: "elastic.out(1, 0.5)"
-      }, "-=1");
-      
-      tl.from(".bg-shape-2", {
-        x: 200,
-        y: 200,
-        opacity: 0,
-        duration: 2,
-        ease: "elastic.out(1, 0.5)"
-      }, "-=1.5");
+        duration: 1.5,
+        ease: "power3.out",
+        stagger: 0.2
+      }, "-=0.8");
 
-      infoCardsRef.current.forEach((card, i) => {
-        gsap.from(card, {
-          scrollTrigger: {
-            trigger: card,
-            start: "top 80%",
-            toggleActions: "play none none none"
-          },
-          x: i % 2 === 0 ? -50 : 50,
-          opacity: 0,
-          duration: 0.8,
-          delay: i * 0.15,
-          ease: "back.out(1.2)"
-        });
+      gsap.from(infoCardsRef.current, {
+        scrollTrigger: {
+          trigger: ".info-cards-grid",
+          start: "top 80%",
+          toggleActions: "play none none none"
+        },
+        y: 40,
+        opacity: 0,
+        scale: 0.95,
+        stagger: 0.2,
+        duration: 0.8,
+        ease: "power3.out"
       });
 
       gsap.from(sectionRef.current, {
@@ -87,26 +88,30 @@ function Home() {
           start: "top 80%",
           toggleActions: "play none none none"
         },
-        y: 50,
+        y: 40,
         opacity: 0,
+        scale: 0.95,
         duration: 1,
-        ease: "power2.out"
+        ease: "power3.out"
       });
 
       const mm = gsap.matchMedia();
-      
       mm.add("(max-width: 768px)", () => {
-        gsap.set(".bg-shape", { scale: 0.7 });
-        gsap.set(".hero", { y: -40 });
+        gsap.set(".bg-shape", { scale: 0.6 });
+        gsap.set(".hero", { y: -30 });
       });
 
     }, containerRef);
-    
+
     return () => {
       ctx.revert();
       ScrollTrigger.getAll().forEach(trigger => trigger.kill());
     };
   }, []);
+
+  const handleRedirect = () => {
+    navigate('/about');
+  };
 
   return (
     <div className="home-container" ref={containerRef}>
@@ -148,8 +153,9 @@ function Home() {
           <button 
             className="cta-button"
             aria-label="Explore my portfolio work"
+            onClick={handleRedirect}
           >
-            Explore My Work
+            Want to know about me?
           </button>
         </section>
       </main>

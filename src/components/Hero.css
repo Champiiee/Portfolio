@@ -1,0 +1,20 @@
+.hero-content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap; /* allow wrap on small screens */
+    gap: 3rem;
+    text-align: left;
+    padding: 2rem;
+  }
+  
+  .hero-text {
+    max-width: 600px;
+  }
+  
+  .hero-image {
+    width: 500px;
+    height: auto;
+    object-fit: cover;
+  }
+  

@@ -6,7 +6,7 @@ function InfoCard() {
     <Card sx={{ maxWidth: 600, margin: '2rem auto', padding: 2, boxShadow: 5 }}>
       <CardContent>
         <Typography variant="h4" component="div" gutterBottom>
-          Your Name
+          Frontend Developer
         </Typography>
         <Typography variant="body1" color="text.secondary">
           Passionate web developer with skills in React, Node.js, and UI/UX design.

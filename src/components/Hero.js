@@ -1,5 +1,6 @@
 import React from 'react';
 import { Typography } from '@mui/material';
+import profileImage from '../assets/aa.png';
 
 function Hero() {
   return (
@@ -9,12 +10,12 @@ function Hero() {
         alignItems: 'center', 
         justifyContent: 'center', 
         marginTop: '2rem',
-        gap: '2rem', // space between text and image
+        gap: '2rem',
       }}
     >
       <div style={{ textAlign: 'left' }}>
         <Typography variant="h2" component="h1" gutterBottom>
-          Welcome to My Portfolio
+          Hello there! I'm Kimi!
         </Typography>
         <Typography variant="h5" component="h2">
           I build amazing web experiences.
@@ -22,12 +23,12 @@ function Hero() {
       </div>
 
       <img 
-        src="/path-to-your-image.jpg" 
+        src={profileImage}
         alt="My profile" 
         style={{ 
-          width: '300px', 
+          width: '500px', 
           height: 'auto', 
-          borderRadius: '10px' // optional: makes the image corners rounded
+          borderRadius: '10px'
         }} 
       />
     </div>
