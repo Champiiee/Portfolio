@@ -12,13 +12,13 @@ function App() {
     <>
       <CssBaseline />
       <Navbar />
-      <Container maxWidth="lg">
+      <div maxWidth="lg">
         <Routes>
           <Route path="/" element={<PageWrapper><Home /></PageWrapper>} />
           <Route path="/about" element={<PageWrapper><About /></PageWrapper>} />
           <Route path="/contact" element={<PageWrapper><Contact /></PageWrapper>} />
         </Routes>
-      </Container>
+      </div>
     </>
   );
 }

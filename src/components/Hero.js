@@ -14,10 +14,10 @@ function Hero() {
       }}
     >
       <div style={{ textAlign: 'left' }}>
-        <Typography variant="h2" component="h1" gutterBottom>
+        <Typography variant="h2" component="h1" gutterBottom sx={{ color: 'white' }}>
           Hello there! I'm Kimi!
         </Typography>
-        <Typography variant="h5" component="h2">
+        <Typography variant="h5" component="h2" sx={{ color: 'white' }}>
           I build amazing web experiences.
         </Typography>
       </div>
