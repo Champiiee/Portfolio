@@ -8,6 +8,7 @@ import {
   Link,
 } from "@mui/material";
 import { Facebook, LinkedIn, Email, GitHub } from "@mui/icons-material";
+import bgImage from "../assets/bg.jpg";
 
 const contactStyles = {
   container: {
@@ -20,15 +21,20 @@ const contactStyles = {
     backgroundColor: "#f5f5f5",
     minHeight: "100vh",
     textAlign: "center",
+    backgroundImage: `url(${bgImage})`,
+    backgroundSize: "cover",
+    backgroundPosition: "center",
+    backgroundRepeat: "no-repeat",
   },
   sectionTitle: {
     fontSize: "2.5rem",
+    marginTop: "2rem",
+    marginBottom: "1.5rem",
     background: "linear-gradient(90deg, #007BFF, #0056b3)",
     WebkitBackgroundClip: "text",
     backgroundClip: "text",
     color: "transparent",
     textAlign: "center",
-    marginTop:  "2rem",
   },
   infoCardsGrid: {
     display: "flex",
@@ -67,7 +73,7 @@ const contactStyles = {
   },
   infoCardText: {
     fontSize: "1rem",
-    color: "#333",
+    color: "#fff",
   },
   button: {
     width: "100%",
@@ -87,7 +93,11 @@ const contactStyles = {
     justifyContent: "center",
     marginTop: "1rem",
   },
-
+};
+const iconButtonHoverStyles = {
+  "&:hover": {
+    color: "white", // Change icon color to white on hover
+  },
 };
 
 function Contact() {
@@ -157,6 +167,12 @@ function Contact() {
               variant="outlined"
               margin="normal"
               required
+              InputProps={{
+                style: { color: "white", borderColor: "blue" }, // Text color and border color
+              }}
+              InputLabelProps={{
+                style: { color: "white" }, // Label color
+              }}
             />
             <TextField
               fullWidth
@@ -172,6 +188,12 @@ function Contact() {
                 pattern: "^[^@\\s]+@[^@\\s]+\\.[^@\\s]+$",
                 title: "Please enter a valid email address",
               }}
+              InputProps={{
+                style: { color: "white", borderColor: "white" },
+              }}
+              InputLabelProps={{
+                style: { color: "white" },
+              }}
             />
             <TextField
               fullWidth
@@ -185,6 +207,13 @@ function Contact() {
               rows={4}
               required
               disabled={!formData.email}
+              InputProps={{
+                style: { color: "white", borderColor: "#007BFF" },
+              }}
+              InputLabelProps={{
+                style: { color: "white" },
+              }}
+              
             />
             <Button
               type="submit"
@@ -216,42 +245,46 @@ function Contact() {
             Connect with me
           </Typography>
           <CardActions style={contactStyles.socialActions}>
-            <IconButton
-              component={Link}
-              href="https://facebook.com/kuyakimiii"
-              target="_blank"
-              rel="noopener noreferrer"
-              color="primary"
-            >
-              <Facebook fontSize="large" />
-            </IconButton>
-            <IconButton
-              component={Link}
-              href="https://www.linkedin.com/in/kimibrentmendoza/"
-              target="_blank"
-              rel="noopener noreferrer"
-              color="primary"
-            >
-              <LinkedIn fontSize="large" />
-            </IconButton>
-            <IconButton
-              component={Link}
-              href="mailto:kimibrentmendoza@gmail.com"
-              target="_blank"
-              rel="noopener noreferrer"
-              color="primary"
-            >
-              <Email fontSize="large" />
-            </IconButton>
-            <IconButton
-              component={Link}
-              href="https://github.com/Champiiee"
-              target="_blank"
-              rel="noopener noreferrer"
-              color="primary"
-            >
-              <GitHub fontSize="large" />
-            </IconButton>
+          <IconButton
+  component={Link}
+  href="https://facebook.com/kuyakimiii"
+  target="_blank"
+  rel="noopener noreferrer"
+  color="primary"
+  sx={iconButtonHoverStyles}
+>
+  <Facebook fontSize="large" />
+</IconButton>
+<IconButton
+  component={Link}
+  href="https://www.linkedin.com/in/kimibrentmendoza/"
+  target="_blank"
+  rel="noopener noreferrer"
+  color="primary"
+  sx={iconButtonHoverStyles}
+>
+  <LinkedIn fontSize="large" />
+</IconButton>
+<IconButton
+  component={Link}
+  href="mailto:kimibrentmendoza@gmail.com"
+  target="_blank"
+  rel="noopener noreferrer"
+  color="primary"
+  sx={iconButtonHoverStyles}
+>
+  <Email fontSize="large" />
+</IconButton>
+<IconButton
+  component={Link}
+  href="https://github.com/Champiiee"
+  target="_blank"
+  rel="noopener noreferrer"
+  color="primary"
+  sx={iconButtonHoverStyles}
+>
+  <GitHub fontSize="large" />
+</IconButton>
           </CardActions>
         </div>
       </div>
