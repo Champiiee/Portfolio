@@ -213,7 +213,6 @@ function Contact() {
               InputLabelProps={{
                 style: { color: "white" },
               }}
-              
             />
             <Button
               type="submit"
@@ -245,46 +244,46 @@ function Contact() {
             Connect with me
           </Typography>
           <CardActions style={contactStyles.socialActions}>
-          <IconButton
-  component={Link}
-  href="https://facebook.com/kuyakimiii"
-  target="_blank"
-  rel="noopener noreferrer"
-  color="primary"
-  sx={iconButtonHoverStyles}
->
-  <Facebook fontSize="large" />
-</IconButton>
-<IconButton
-  component={Link}
-  href="https://www.linkedin.com/in/kimibrentmendoza/"
-  target="_blank"
-  rel="noopener noreferrer"
-  color="primary"
-  sx={iconButtonHoverStyles}
->
-  <LinkedIn fontSize="large" />
-</IconButton>
-<IconButton
-  component={Link}
-  href="mailto:kimibrentmendoza@gmail.com"
-  target="_blank"
-  rel="noopener noreferrer"
-  color="primary"
-  sx={iconButtonHoverStyles}
->
-  <Email fontSize="large" />
-</IconButton>
-<IconButton
-  component={Link}
-  href="https://github.com/Champiiee"
-  target="_blank"
-  rel="noopener noreferrer"
-  color="primary"
-  sx={iconButtonHoverStyles}
->
-  <GitHub fontSize="large" />
-</IconButton>
+            <IconButton
+              component={Link}
+              href="https://facebook.com/kuyakimiii"
+              target="_blank"
+              rel="noopener noreferrer"
+              color="primary"
+              sx={iconButtonHoverStyles}
+            >
+              <Facebook fontSize="large" />
+            </IconButton>
+            <IconButton
+              component={Link}
+              href="https://www.linkedin.com/in/kimibrentmendoza/"
+              target="_blank"
+              rel="noopener noreferrer"
+              color="primary"
+              sx={iconButtonHoverStyles}
+            >
+              <LinkedIn fontSize="large" />
+            </IconButton>
+            <IconButton
+              component={Link}
+              href="mailto:kimibrentmendoza@gmail.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              color="primary"
+              sx={iconButtonHoverStyles}
+            >
+              <Email fontSize="large" />
+            </IconButton>
+            <IconButton
+              component={Link}
+              href="https://github.com/Champiiee"
+              target="_blank"
+              rel="noopener noreferrer"
+              color="primary"
+              sx={iconButtonHoverStyles}
+            >
+              <GitHub fontSize="large" />
+            </IconButton>
           </CardActions>
         </div>
       </div>
