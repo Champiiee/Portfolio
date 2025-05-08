@@ -3,57 +3,91 @@ import {
   Typography,
   TextField,
   Button,
-  Card,
-  CardContent,
   CardActions,
   IconButton,
   Link,
 } from "@mui/material";
 import { Facebook, LinkedIn, Email, GitHub } from "@mui/icons-material";
 
-const styles = {
+const contactStyles = {
   container: {
-    marginTop: "4rem",
-    marginLeft: "auto",
-    marginRight: "auto",
-    padding: "2rem",
-    backgroundColor: "white",
-    borderRadius: "12px",
-    boxShadow: "0 8px 20px rgba(0, 0, 0, 0.2)",
-    maxWidth: "600px",
+    position: "relative",
+    flexDirection: "column",
+    alignItems: "center",
+    justifyContent: "center",
+    overflow: "hidden",
+    maxWidth: "100%",
+    backgroundColor: "#f5f5f5",
+    minHeight: "100vh",
+    textAlign: "center",
+  },
+  sectionTitle: {
+    fontSize: "2.5rem",
+    background: "linear-gradient(90deg, #007BFF, #0056b3)",
+    WebkitBackgroundClip: "text",
+    backgroundClip: "text",
+    color: "transparent",
+    textAlign: "center",
+    marginTop:  "2rem",
+  },
+  infoCardsGrid: {
     display: "flex",
     flexDirection: "column",
     alignItems: "center",
-  },
-  formContainer: {
+    gap: "2.5rem",
+    marginTop: "2rem",
     width: "100%",
-    marginTop: "1rem",
+  },
+  infoCard: {
+    background: "rgba(0, 123, 255, 0.1)",
+    backdropFilter: "blur(10px)",
+    boxShadow: "0 8px 20px rgba(0, 123, 255, 0.2)",
+    borderRadius: "20px",
+    padding: "2.5rem 2rem",
+    transition: "transform 0.3s ease, box-shadow 0.3s ease",
+    display: "flex",
+    flexDirection: "column",
+    alignItems: "center",
+    justifyContent: "center",
+    width: "100%",
+    maxWidth: "600px",
+  },
+  infoCardHover: {
+    transform: "translateY(-10px)",
+    boxShadow: "0 12px 30px rgba(0, 123, 255, 0.2)",
+  },
+  infoCardTitle: {
+    fontSize: "1.5rem",
+    fontWeight: "bold",
+    marginBottom: "1rem",
+    background: "linear-gradient(90deg, #007BFF, #0056b3)",
+    WebkitBackgroundClip: "text",
+    backgroundClip: "text",
+    color: "transparent",
+  },
+  infoCardText: {
+    fontSize: "1rem",
+    color: "#333",
   },
   button: {
     width: "100%",
-    padding: "12px 20px",
+    padding: "12px",
+    fontSize: "1.1rem",
     backgroundColor: "#007BFF",
     color: "white",
-    border: "none",
     borderRadius: "8px",
-    fontSize: "1.2rem",
-    cursor: "pointer",
     boxShadow: "0 4px 15px rgba(0, 123, 255, 0.3)",
     transition: "all 0.3s ease",
   },
   buttonHover: {
-    outline: "2px solid black",
     backgroundColor: "#0056b3",
-    color: "white",
+    outline: "2px solid black",
   },
-  socialCard: {
-    marginTop: "2rem",
-    width: "100%",
-    textAlign: "center",
-    padding: "1rem",
-    boxShadow: "0 4px 15px rgba(0, 0, 0, 0.1)",
-    borderRadius: "12px",
+  socialActions: {
+    justifyContent: "center",
+    marginTop: "1rem",
   },
+
 };
 
 function Contact() {
@@ -64,6 +98,7 @@ function Contact() {
   });
 
   const [isHovered, setIsHovered] = useState(false);
+  const [hoveredCard, setHoveredCard] = useState(null);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -97,85 +132,90 @@ function Contact() {
   };
 
   return (
-    <div style={styles.container}>
-      <Typography
-        variant="h4"
-        fontWeight="bold"
-        gutterBottom
-        align="center"
-        style={{ color: "#333" }}
-      >
+    <div style={contactStyles.container}>
+      <Typography variant="h4" style={contactStyles.sectionTitle} gutterBottom>
         Try to reach me?
       </Typography>
 
-      <form onSubmit={handleSubmit} style={styles.formContainer}>
-        <TextField
-          fullWidth
-          label="Name"
-          id="name"
-          name="name"
-          value={formData.name}
-          onChange={handleChange}
-          variant="outlined"
-          margin="normal"
-          required
-        />
-
-        <TextField
-          fullWidth
-          label="Email"
-          id="email"
-          name="email"
-          value={formData.email}
-          onChange={handleChange}
-          variant="outlined"
-          margin="normal"
-          required
-          disabled={!formData.name}
-          inputProps={{
-            pattern: "^[^@\\s]+@[^@\\s]+\\.[^@\\s]+$",
-            title: "Please enter a valid email address",
+      <div style={contactStyles.infoCardsGrid}>
+        {/* Contact Form Card */}
+        <div
+          style={{
+            ...contactStyles.infoCard,
+            ...(hoveredCard === "form" ? contactStyles.infoCardHover : {}),
           }}
-        />
-
-        <TextField
-          fullWidth
-          label="Message"
-          id="message"
-          name="message"
-          value={formData.message}
-          onChange={handleChange}
-          variant="outlined"
-          margin="normal"
-          multiline
-          rows={4}
-          required
-          disabled={!formData.email}
-        />
-
-        <Button
-          type="submit"
-          variant="contained"
-          style={
-            isHovered
-              ? { ...styles.button, ...styles.buttonHover }
-              : styles.button
-          }
-          onMouseEnter={() => setIsHovered(true)}
-          onMouseLeave={() => setIsHovered(false)}
-          disabled={!formData.message}
+          onMouseEnter={() => setHoveredCard("form")}
+          onMouseLeave={() => setHoveredCard(null)}
         >
-          Submit
-        </Button>
-      </form>
+          <form onSubmit={handleSubmit} style={{ width: "100%" }}>
+            <TextField
+              fullWidth
+              label="Name"
+              name="name"
+              value={formData.name}
+              onChange={handleChange}
+              variant="outlined"
+              margin="normal"
+              required
+            />
+            <TextField
+              fullWidth
+              label="Email"
+              name="email"
+              value={formData.email}
+              onChange={handleChange}
+              variant="outlined"
+              margin="normal"
+              required
+              disabled={!formData.name}
+              inputProps={{
+                pattern: "^[^@\\s]+@[^@\\s]+\\.[^@\\s]+$",
+                title: "Please enter a valid email address",
+              }}
+            />
+            <TextField
+              fullWidth
+              label="Message"
+              name="message"
+              value={formData.message}
+              onChange={handleChange}
+              variant="outlined"
+              margin="normal"
+              multiline
+              rows={4}
+              required
+              disabled={!formData.email}
+            />
+            <Button
+              type="submit"
+              variant="contained"
+              style={
+                isHovered
+                  ? { ...contactStyles.button, ...contactStyles.buttonHover }
+                  : contactStyles.button
+              }
+              onMouseEnter={() => setIsHovered(true)}
+              onMouseLeave={() => setIsHovered(false)}
+              disabled={!formData.message}
+            >
+              Submit
+            </Button>
+          </form>
+        </div>
 
-      {/* SOCIALS CARD */}
-      <Card style={styles.socialCard}>
-        <CardContent>
-          <Typography variant="h5" fontWeight="bold" gutterBottom>
+        {/* Social Links Card */}
+        <div
+          style={{
+            ...contactStyles.infoCard,
+            ...(hoveredCard === "social" ? contactStyles.infoCardHover : {}),
+          }}
+          onMouseEnter={() => setHoveredCard("social")}
+          onMouseLeave={() => setHoveredCard(null)}
+        >
+          <Typography style={contactStyles.infoCardTitle}>
             Connect with me
           </Typography>
-          <CardActions style={{ justifyContent: "center" }}>
+          <CardActions style={contactStyles.socialActions}>
             <IconButton
               component={Link}
               href="https://facebook.com/kuyakimiii"
@@ -185,7 +225,6 @@ function Contact() {
             >
               <Facebook fontSize="large" />
             </IconButton>
-
             <IconButton
               component={Link}
               href="https://www.linkedin.com/in/kimibrentmendoza/"
@@ -195,7 +234,6 @@ function Contact() {
             >
               <LinkedIn fontSize="large" />
             </IconButton>
-
             <IconButton
               component={Link}
               href="mailto:kimibrentmendoza@gmail.com"
@@ -205,7 +243,6 @@ function Contact() {
             >
               <Email fontSize="large" />
             </IconButton>
-
             <IconButton
               component={Link}
               href="https://github.com/Champiiee"
@@ -216,8 +253,8 @@ function Contact() {
               <GitHub fontSize="large" />
             </IconButton>
           </CardActions>
-        </CardContent>
-      </Card>
+        </div>
+      </div>
     </div>
   );
 }
