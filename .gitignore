@@ -1,3 +1,4 @@
+node_modules
 # Node.js dependencies
 node_modules/
 
@@ -50,4 +51,3 @@ coverage/
 *.lock
 =======
 node_modules
->>>>>>> Stashed changes
