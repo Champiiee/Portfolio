@@ -1,3 +1,4 @@
+<<<<<<< Updated upstream
 # Node.js dependencies
 node_modules/
 
@@ -48,3 +49,6 @@ coverage/
 
 # Miscellaneous
 *.lock
+=======
+node_modules
+>>>>>>> Stashed changes
